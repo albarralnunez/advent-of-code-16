@@ -87,3 +87,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# Idea from JBrains IDE. Just the workspace, keep the config
+.idea/workspace.xml
