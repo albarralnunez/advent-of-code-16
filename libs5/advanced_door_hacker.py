@@ -2,6 +2,7 @@ import re
 from libs5.door_hacker import DoorHacker
 from libs5.exceptions import TooMuchIterations
 
+
 class AdvancedDoorHacker(DoorHacker):
 
     def __init__(self, *args, **kwargs):
