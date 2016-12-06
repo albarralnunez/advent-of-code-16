@@ -22,9 +22,8 @@ def problem_1(messages):
 
 @commons.speed_test
 def problem_2(messages):
-    counters_for_each_index = (Counter(x) for x in zip(*messages))
-    less_common_letters = (sorted(dict(cnt), key=(lambda x: cnt[x]))[0] for
-                           cnt in counters_for_each_index)
+    less_common_letters = (Counter(x).most_common()[-1][0] for x in zip(
+        *messages))
     return ''.join(x for x in less_common_letters)
 
 
