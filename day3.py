@@ -34,13 +34,13 @@ def problem(triangles):
 
 @commons.speed_test
 def main():
-    triangles = read_input_problem_1('inputs/day_3.txt')
+    triangles = read_input_problem_1('inputs/day_3.in')
     print 'Problem 1 Number of valid triangles: %s' % problem(triangles)
-    triangles = read_input_problem_2('inputs/day_3.txt')
+    triangles = read_input_problem_2('inputs/day_3.in')
     print 'Problem 2 Number of valid triangles: %s' % problem(triangles)
 
     # Epic one liner for problem one
-    with open('inputs/day_3.txt', 'r') as f:
+    with open('inputs/day_3.in', 'r') as f:
         print 'Problem 1 Number of valid triangles: %s' % len(filter(
             lambda x: x.is_valid(),
             [Triangle(int(c1), int(c2), int(h))
@@ -48,7 +48,7 @@ def main():
                                for line in f.read().split('\n')]]))
 
     # Epic one liner for problem two
-    with open('inputs/day_3.txt', 'r') as f:
+    with open('inputs/day_3.in', 'r') as f:
         print 'Problem 2 Number of valid triangles: %s' % len(filter(
             lambda x: x.is_valid(),
             [Triangle(int(c1), int(c2), int(h))

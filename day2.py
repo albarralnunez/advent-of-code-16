@@ -48,7 +48,7 @@ def main():
         ['*', '*', 'D', '*', '*']
     ]
     problem_2_start = Point(0, 2)
-    actions = read_input('inputs/day_2.txt')
+    actions = read_input('inputs/day_2.in')
     print 'Problem 1 Password: %s' % problem(
         actions, problem_1_keys, problem_1_start)
     print 'Problem 2 Password: %s' % problem(

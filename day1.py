@@ -30,7 +30,7 @@ def problem_2(actions):
 
 @speed_test
 def main():
-    actions = read_input('inputs/day_1.txt')
+    actions = read_input('inputs/day_1.in')
     print 'Taxicap distance: %s' % problem_1(actions)
     print 'Taxicap distance to first intersection: %s' % problem_2(actions)
 

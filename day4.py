@@ -50,10 +50,10 @@ def problem2(bank):
 
 @commons.speed_test
 def main():
-    bank = read_input_problem_1('inputs/day_4.txt')
+    bank = read_input_problem_1('inputs/day_4.in')
     print 'Problem 1: Sum of the sector IDs of the real rooms: %s' % \
           problem1(bank)
-    bank = read_input_problem_2('inputs/day_4.txt')
+    bank = read_input_problem_2('inputs/day_4.in')
     print 'Problem 2: Sector ID of the room where' \
           'North Pole objects are stored %s' % problem2(bank)
 
