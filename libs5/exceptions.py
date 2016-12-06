@@ -1,0 +1,4 @@
+
+
+class TooMuchIterations(Exception):
+    pass

@@ -1,18 +1,31 @@
-import hashlib
-from multiprocessing import Pool
-from libs4.encoder import Encoder
+from libs5.exceptions import TooMuchIterations
 
 
 class DoorHacker(object):
 
-    CHUNKS = 100000
-    NUM_PROCESS = 4
-
-    def __init__(self, algorithm, password_length, code):
+    def __init__(self, algorithm, password_length, code, index=0,
+                 index_out=None):
         self._algorithm = algorithm
         self._password_length = password_length
         self._code = code
-        self._index = 0
+        self._index_out = index_out
+        self._index = index
+        self._password = ''
+        self._decoded = False
+
+    @property
+    def password(self):
+        if not self._decoded:
+            raise ValueError('You should run decode before')
+        return self._password
+
+    @property
+    def index_out(self):
+        return self._index_out
+
+    @index_out.setter
+    def index_out(self, value):
+        self._index_out = value
 
     @property
     def code(self):
@@ -38,31 +51,28 @@ class DoorHacker(object):
     def algorithm(self, value):
         self._algorithm = value
 
-    def __generate_hash(self, index):
+    @property
+    def index(self):
+        return self._index
+
+    @index.setter
+    def index(self, value):
+        self._index = value
+
+    def _generate_hash(self, index):
         combination = "%s%s" % (self.code, index)
-        return hashlib.md5(combination).hexdigest()
+        return self._algorithm(combination).hexdigest()
 
     @staticmethod
-    def __is_valid_hash(hashed):
+    def _is_valid_hash(hashed):
         return hashed[:5] == '00000'
 
-    def __get_character(self, start_index):
-            index = start_index
-            password = {}
-            while index < self.CHUNKS:
-                possible_hash = self.__generate_hash(index)
-                if self.__is_valid_hash(possible_hash):
-                    password[index] = possible_hash[5]
-                index += 1
-            return password
-
     def decode(self):
-        pool = Pool(self.NUM_PROCESS)
-        password = {}
-        while len(password) < self._password_length:
-            results = pool.map(
-                self.__get_character,
-                range(self._index, self.NUM_PROCESS*self.CHUNKS, self.CHUNKS))
-            map(lambda x: password.update(x), results)
-        self._index += self.NUM_PROCESS * self.CHUNKS
-        return password.values()[:self._password_length]
+        while len(self._password) < self._password_length:
+            possible_hash = self._generate_hash(self._index)
+            if self._is_valid_hash(possible_hash):
+                self._password += possible_hash[5]
+            self._index += 1
+            if self._index_out and self._index > self._index_out:
+                raise TooMuchIterations('Too much iterations')
+        self._decoded = True
