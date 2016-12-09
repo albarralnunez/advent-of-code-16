@@ -53,11 +53,11 @@ class IPv7(object):
 
     def has_ssl(self):
         all_supernet_sequences = \
-            commons.gflatten(self._take_groups(
-                x, self.SSL_LENGTH) for x in self._supernet_sequences)
+            list(commons.gflatten(self._take_groups(
+                x, self.SSL_LENGTH) for x in self._supernet_sequences))
         all_hypernet_sequences = \
-            commons.gflatten(self._take_groups(
-                x, self.SSL_LENGTH) for x in self._hypernet_sequences)
+            list(commons.gflatten(self._take_groups(
+                x, self.SSL_LENGTH) for x in self._hypernet_sequences))
         abas = filter(lambda x: self._is_aba_bab(x), all_supernet_sequences)
         babs = filter(lambda x: self._is_aba_bab(x), all_hypernet_sequences)
         reversed_babs = list((x[1]+x[0]+x[1] for x in babs))

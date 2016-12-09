@@ -26,7 +26,6 @@ class TestIPv7(unittest.TestCase):
         ip = IPv7('aaaa[qwer]tyui')
         self.assertFalse(ip.has_tls())
 
-
     @speed_test
     def test_has_ssl1(self):
         ip = IPv7('aba[bab]xyz')
@@ -40,17 +39,17 @@ class TestIPv7(unittest.TestCase):
 
 
     @speed_test
-    def test_is_ssl3(self):
+    def test_has_ssl3(self):
         ip = IPv7('zazbz[bzb]cdb')
         self.assertTrue(ip.has_ssl())
 
     @speed_test
-    def test_is_ssl4(self):
+    def test_has_ssl4(self):
         ip = IPv7('zabzba[azbz]cdb')
         self.assertTrue(ip.has_ssl())
 
     @speed_test
-    def test_is_ssl4(self):
+    def test_has_ssl5(self):
         ip = IPv7('zaza[azaz]azaz')
         self.assertTrue(ip.has_ssl())
 
@@ -70,16 +69,24 @@ class TestIPv7(unittest.TestCase):
         self.assertFalse(ip.has_ssl())
 
     @speed_test
-    def test_not_has_ssl3(self):
+    def test_not_has_ssl4(self):
         ip = IPv7('xa[aya]ax')
         self.assertFalse(ip.has_ssl())
 
-
     @speed_test
-    def test_not_has_ssl3(self):
+    def test_not_has_ssl5(self):
         ip = IPv7('c[d]abba[e]f')
         self.assertFalse(ip.has_ssl())
 
+    @speed_test
+    def test_not_has_ssl6(self):
+        ip = IPv7('z[aza]azdz')
+        self.assertFalse(ip.has_ssl())
+
+    @speed_test
+    def test_not_has_ssl7(self):
+        ip = IPv7('z[aza]azdz[zaz]wer')
+        self.assertFalse(ip.has_ssl())
 
 if __name__ == '__main__':
     unittest.main()
