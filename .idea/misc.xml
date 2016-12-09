@@ -26,9 +26,5 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.10 virtualenv at ~/.virtualenvs/advent_of_code" project-jdk-type="Python SDK" />
-  <component name="VagrantProjectSettings">
-    <option name="instanceFolder" value="$PROJECT_DIR$/../paisma" />
-    <option name="provider" value="" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.12 virtualenv at ~/.virtualenv/aoc16" project-jdk-type="Python SDK" />
 </project>

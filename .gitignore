@@ -90,3 +90,6 @@ ENV/
 
 # Idea from JBrains IDE. Just the workspace, keep the config
 .idea/workspace.xml
+.idea/vagrant.xml
+.idea/advent_of_code_16.iml
+

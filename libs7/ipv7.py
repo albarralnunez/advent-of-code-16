@@ -20,7 +20,11 @@ class IPv7(object):
     def ip(self, value):
         self._ip = value
         self._hypernet_sequences = re.findall(r'\[(\w+)\]', value)
-        self._supernet_sequences = re.findall(r'\]?(\w+)\[?', value)
+        self._supernet_sequences = (
+            re.findall(r'\](\w+)\[', value) +
+            re.findall(r'(\w+)\[', value) +
+            re.findall(r'\](\w+)', value)
+        )
 
     @staticmethod
     def _take_groups(values, n):
