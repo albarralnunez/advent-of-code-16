@@ -1,0 +1,3 @@
+
+class WrongAction(Exception):
+    pass

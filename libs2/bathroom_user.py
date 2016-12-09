@@ -1,5 +1,5 @@
 from commands import (MoveUp, MoveDown, MoveLeft, MoveRight, Press)
-from exceptions import WrongAction
+from libs.exceptions import WrongAction
 
 
 class BathroomUser(object):
