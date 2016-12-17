@@ -10,9 +10,12 @@ class Point(object):
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
+    def __hash__(self):
+        return int(''.join(map(str, (self.x, self.y))))
+
     def move(self, dx, dy):
-        self.x = self.x + dx
-        self.y = self.y + dy
+        self.x += dx
+        self.y += dy
 
     def tc_distance(self, other):
         dx = self.x - other.x
