@@ -1,9 +1,11 @@
+from libs.graph.graph import Graph
+from libs.graph.a_start_search_mixin import AStarSearchMixin
+from libs.graph.find_all_mixin import FindAllMixin
 from libs.point import Point
 from tails import Corridor, Wall
-from graph import Graph
 
 
-class Maze(Graph):
+class Maze(Graph, FindAllMixin, AStarSearchMixin):
 
     def __init__(self, x, y, seed):
         self.x = x

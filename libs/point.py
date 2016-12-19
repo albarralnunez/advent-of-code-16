@@ -4,14 +4,14 @@ class Point(object):
         self.x = x
         self.y = y
 
-    def __str__(self):
+    def __repr__(self):
         return "Point(%s,%s)" % (self.x, self.y)
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
     def __hash__(self):
-        return int(''.join(map(str, (self.x, self.y))))
+        return (self.x, self.y).__hash__()
 
     def move(self, dx, dy):
         self.x += dx

@@ -1,5 +1,4 @@
-from libs.point import Point
-from graph import Node
+from libs.graph.graph import Node
 
 
 class Tail(Node):
@@ -10,6 +9,10 @@ class Tail(Node):
         self.s = s
         self.e = e
         self.tail_id = tail_id
+
+    @property
+    def node_id(self):
+        return self.tail_id
 
     @property
     def neighbors(self):
